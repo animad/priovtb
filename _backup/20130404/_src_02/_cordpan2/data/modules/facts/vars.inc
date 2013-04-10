@@ -1,0 +1,3 @@
+<?die;?>
+
+mysql[table]:facts

@@ -1,0 +1,266 @@
+.main_main-banner_box{
+	position: absolute;
+	top: -57px;
+	left: 0;
+	width: 100%;
+	height: 357px;
+}
+
+.main_main-banner_box *{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.main .col_r{
+	position: absolute;
+	right: 0;
+	top: 80px;
+	width: 240px;
+	height: auto;
+}
+
+.main .spacer_01, .main .spacer_02{
+	position: relative;
+	height: 20px;
+	font-size: 1px;
+	line-height: 1px;
+}
+.main .spacer_02{
+	height: 70px;
+}
+
+.main .col_c{
+	position: absolute;
+	left: 0;
+	top: 320px;
+	width: 710px;
+	height: 500px;
+}
+
+/**/
+
+.banner .box, .banner .body{
+	height: 100%;
+	width: 100%;
+}
+
+/* вход в НОВЫЙ КБ  */
+
+.btn_kb-enter{
+	position: relative;
+	height: 80px;
+	display: block;
+}
+
+.btn_kb-enter .box, .btn_kb-enter .body{
+	position: relative;
+}
+
+.btn_kb-enter .body{
+	background-image: url(/files/images/btn_kb-enter_map.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+.btn_kb-enter .over .body{
+	background-position: -240px 0;
+}
+
+.btn_kb-enter .label_new{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	width: 49px;
+	height: 49px;
+	background-image: url(/files/images/btn_kb-enter_new-label.png);
+	background-position: top left;
+	background-repeat: no-repeat;	
+}
+
+.btn_kb-enter .priosha-hairs{
+	position: absolute;
+	top: -34px;
+	right: 6px;
+	width: 48px;
+	height: 34px;
+	background-image: url(/files/images/btn_kb-enter_priosha-hairs.png);
+	background-position: top left;
+	background-repeat: no-repeat;	
+}
+
+/* центральный блок баннеров */
+
+.banners_block{
+	position: relative;
+	height: 220px;
+}
+
+.banners_block .banner_02{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 100px;
+	display: block;
+}
+
+.banners_block .banner_02 .body{
+	background-image: url(../images/banners/banner_02_serv4u.png);
+	background-position: top left;
+	background-repeat: no-repeat;	
+}
+
+.banners_block .banner_03{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 150px;
+	height: 100px;
+	display: block;
+}
+
+.banners_block .banner_03 .body{
+	background-image: url(../images/banners/banner_03_serv4bus.png);
+	background-position: top left;
+	background-repeat: no-repeat;	
+}
+
+.banners_block .banner_04{
+	position: absolute;
+	top: 0;
+	left: 170px;
+	width: 370px;
+	height: 220px;
+	display: block;
+}
+
+.banners_block .banner_04 .body{
+	background-image: url(../images/banners/banner_04.png);
+	background-position: top left;
+	background-repeat: no-repeat;	
+}
+
+.banners_block .banner_04 .bottom_clip{
+	position: absolute;
+	bottom: -29px;
+	left: 1px;
+	width: 372px;
+	height: 29px;
+	background: url(../images/banners/banner_04_02.png) no-repeat top left;
+}
+.banners_block .banner_04 .right_clip{
+	position: absolute;
+	top: 3px;
+	right: -13px;
+	width: 13px;
+	height: 217px;
+	background: url(../images/banners/banner_04_03.png) no-repeat top left;
+}
+
+.banners_block .banner_05{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 150px;
+	height: 220px;
+	display: block;
+}
+
+.banners_block .banner_05 .body{
+	background-image: url(../images/banners/banner_pdd_06_na.png);
+	background-position: top left;
+	background-repeat: no-repeat;	
+}
+
+/**/
+
+.slide{
+	position: relative;
+	height: 39px;
+	width: 235px;
+	float: left;
+}
+			
+.scroll_box{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 710px;
+	height: 39px;
+	overflow: hidden;
+	background: url(point_trnt_30.png) repeat;
+}
+
+.slider{
+	position: relative;
+	height: 39px;
+	width: 10000px;
+	
+}
+
+/**/
+
+.main_main-banner_box .btn_banner_atm{
+	position: absolute;
+	bottom: 150px;
+	left: 460px;
+	width: 202px;
+	height: 78px;
+}
+.main_main-banner_box .btn_banner_atm .body{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 83px;
+	background-image: url(../images/banners/btn_banner_coord-bankomats.png);
+	background-position: 0;
+	background-repeat: no-repeat;
+}
+
+.main_main-banner_box .btn_banner_trm{
+	position: absolute;
+	bottom: 50px;
+	left: 460px;
+	width: 202px;
+	height: 78px;
+	
+}
+.main_main-banner_box .btn_banner_trm .body{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 92px;
+	background-image: url(../images/banners/btn_banner_coord-terminals.png);
+	background-position: 0;
+	background-repeat: no-repeat;
+}
+
+/**/
+
+.main_main-banner_box .q-info_phone-number{
+	position: absolute;
+	bottom: 240px;
+	left: 460px;
+	width: 260px;
+	height: 55px;
+}
+.main_main-banner_box .q-info_phone-number .body{
+	background: url(/files/images/q-info_phone-number.png) no-repeat 0;
+}
+
+.main_main-banner_box .q-info_email{
+	position: absolute;
+	bottom: 240px;
+	left: 730px;
+	width: 240px;
+	height: 55px;
+}
+.main_main-banner_box .q-info_email .body{
+	background-image: url(/files/images/q-info_email_map.png);
+	background-position: 0;
+	background-repeat: no-repeat;
+}
+.main_main-banner_box .q-info_email .over .body{
+	background-position: -240px 0;
+}
+

@@ -1,0 +1,31 @@
+%doctype1%
+
+<html%doctype2%>
+	<head>
+		<title>%title%</title>
+		<meta http-equiv="Content-type" content="text/html; charset=%charset%" />
+		<meta name="keywords" content="%keywords%" />
+		<meta name="description" content="%description%" />
+		%meta%
+		<style type="text/css" media="screen">
+			@import url(files/skin/%skin%/styles/tpl.css);
+			@import url(files/skin/%skin%/styles/centerdata.css);
+		</style>
+		<script type="text/javascript" src="pool/vars/global.js"></script>
+		<script type="text/javascript" src="pool/vars/mmenu.js"></script>
+		<script type="text/javascript" src="files/scripts/mmenu.js"></script>
+		<script type="text/javascript" src="files/scripts/get_news.js"></script>
+		<script type="text/javascript" src="files/scripts/layers_02.js"></script>
+		<script type="text/javascript" src="files/scripts/mail_valid.js"></script>
+<!--		<script type="text/javascript" src="files/scripts/preload.js"></script> -->
+<!--		<script type="text/javascript" src="files/scripts/keyfilter.js"></script>-->
+		<script type="text/javascript">
+var current_page=null; //--- активная страница
+		</script>
+	</head>
+
+	<body>
+			<noscript><div class="message"><div class="red">Внимание! Обработчик JavaScript выключен или отвутствует. Включите обработку скриптов или замените обозреватель интернета</div></div></noscript>
+		%content%
+	</body>
+</html>

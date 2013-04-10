@@ -1,0 +1,14 @@
+	<style type="text/css">
+	.row .ans_var .border_t{
+		clip: rect(0 1000px 1px 10px);
+	}
+	.row .ans_var .border_b{
+		clip: rect(0 1000px 1px 10px);
+	}
+	.row .ans_var .border_r{
+		clip: rect(10px 1px 1000px 0);
+	}
+	.row .ans_var .border_l{
+		clip: rect(10px 1px 1000px 0);
+	}
+	</style>

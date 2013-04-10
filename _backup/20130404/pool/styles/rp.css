@@ -1,0 +1,290 @@
+.rp_filter{
+	position: relative;
+	text-align: center;
+}
+.rp_filter .btn{
+	margin: 5px;
+	padding: 5px 10px;
+	display: inline-block;
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.rp_filter .over{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.rp_filter .active{
+	background-color: #1a6c45;
+	color: white;
+}
+
+.rp_filter .dec2{
+	border: 1px #a0d5bc solid;
+}
+
+/**/
+
+.rp_list .h1{
+	font-size: 16px;
+	font-weight: bold;
+	padding: 16px;
+	padding-left: 30px;
+	
+}
+.rp_list{
+	position: relative;
+}
+.rp_list, .list_title{
+/*	display: none;*/
+}
+.rp_list .row{
+	position: relative;
+	padding: 8px 0 8px 30px;
+	background: url(/files/skin/skin2/images/point_arrow1.gif) 15px 12px no-repeat;
+
+}
+
+.rp_list .row .col_10{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 80px;
+	
+	text-align: center;
+	
+}
+.rp_list .row .col_20{
+	position: relative;
+	padding-left: 80px;
+}
+.rp_list .row .table1{
+	border-collapse: collapse;
+/*	width: 100%;*/
+}
+.rp_list .row .table1 td{
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+}
+
+.rp_list .row .title{
+	padding: 6px 0;
+}
+.rp_list .row .num{
+	padding-top: 3px;
+	font-size: 30px;
+}
+.rp_list .about{
+	font-size: 10px !important;
+	font-style: italic;
+	vertical-align: top;
+}
+.rp_list .price{
+	vertical-align: top;
+	font-weight: bold;
+	text-align: right;
+}
+.rp_list .col_23{
+	width: 150px;
+}
+
+.rp_list .info{
+	color: #9b9b9b;
+}
+
+.rp_list .over{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.rp_list .over .title, .rp_list .over .info{
+	text-decoration: underline;
+}
+
+
+/**/
+
+.filter_title{
+	color: black !important;
+	background-color: transparent !important;
+	margin: 40px 0 10px 0 !important;
+}
+.list_title{
+	color: black !important;
+	background-color: transparent !important;
+	margin: 40px 0 10px 0 !important;
+}
+.rp_list .odd {
+	background-color: #f9f9f9;
+}
+
+.rp_list .even {
+	background-color: transparent;
+}
+
+.rp_list .show {
+	display: block;
+}
+.rp_list .hide {
+	display: none;
+}
+.rp_list .rp_list_absent{
+	text-align: center;
+	margin-top: 50px;
+	padding: 10px;
+	
+	background-color: #fe9b9e;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+}
+
+/**/
+
+.path_bar{
+	padding: 10px 0;
+}
+
+/**/
+
+.property_pics{
+	margin: 0;
+	padding: 0;
+}
+.property_pics li{
+	display: inline-block;
+	list-style-type: none;
+}
+.property_pics li img{
+	padding: 5px;
+}
+
+.property_pics li.over{
+	cursor: help;
+}
+
+.property_pics .preview_box{
+	display: none;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+}
+.property_pics .preview_box .dark{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(/pool/images/point_tnt_80_black.png);
+}
+.property_pics .preview_box .img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center 100px;
+}
+
+.property_pics .btn_image .img_preview{
+	display: none;
+}
+
+.property_pics .btn_close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100px;
+}
+.property_pics .btn_close .ico{
+	position: absolute;
+	top: 34px;
+	right: 34px;
+	width: 32px;
+	height: 32px;
+	background-image: url(/pool/images/btn_close_01.png);
+	background-repeat: no-repeat;
+	background-position: 0;
+}
+.property_pics .ico .info{
+	position: absolute;
+	top: 32px;
+	right: 0;
+	text-align: right;
+	font-size: 11px;
+	color: white;
+	display: none;
+}
+
+.property_pics .btn_next{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+.property_pics .btn_next .ico{
+	position: absolute;
+	top: 150px;
+	right: 34px;
+	width: 32px;
+	height: 32px;
+	background-image: url(/pool/images/btn_next_01.png);
+	background-repeat: no-repeat;
+	background-position: 0;
+}
+.property_pics .btn_prev{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 25%;
+	height: 100%;
+}
+.property_pics .btn_prev .ico{
+	position: absolute;
+	top: 150px;
+	left: 34px;
+	width: 32px;
+	height: 32px;
+	background-image: url(/pool/images/btn_prev_01.png);
+	background-repeat: no-repeat;
+	background-position: 0;
+}
+
+
+.property_pics .over{
+	cursor: pointer;
+}
+.property_pics .over .ico{
+	background-position: -32px 0;
+}
+.property_pics .over .info{
+	display: block;
+}
+
+.rp_mark_01{
+	text-align: center;
+	border: 1px solid #5ca07f;
+	background-color: #e1f3ea;
+	padding: 15px;
+
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+}
+.rp_mark_01 a, .rp_mark_01 a:hover{
+	font-size: 20px;
+}

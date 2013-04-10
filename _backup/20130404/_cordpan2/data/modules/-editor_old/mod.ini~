@@ -1,0 +1,14 @@
+; Это пример файла настроек
+; Комментарии начинаются с ';', как в php.ini
+
+[info]
+uId="c1af3547cafa189df8c2a846e37a9479"
+title="редактор"
+
+[run]
+place="editor"
+execute="run.php"
+
+[config]
+dir_dest="files/pool"
+browse_files="false";

@@ -1,0 +1,7 @@
+RewriteEngine off
+Options -Indexes
+
+###
+
+deny from all
+allow from 195.151.213.97 80.72.113.194

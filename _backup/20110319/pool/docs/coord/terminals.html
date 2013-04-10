@@ -1,0 +1,18 @@
+<?php
+	$towns=array('ryazan'=>'г. Рязань', 'novomich'=>'г. Новомичуринск');
+	print '<ol>';
+	while(list($tkey,$ttitle)=each($towns)){
+		reset($globals['terminals']);
+		print '<h1>'.$ttitle.'</h1>';
+		while(list($atm,$bdata)=each($globals['terminals'])){
+			if($bdata['town']==$tkey && isset($bdata['show'])){
+				print '<li><div><b>'.$bdata['place'].'</b><br />'.
+				      (trim($bdata['adr'])!=''?'Адрес: '.$bdata['adr'].';<br />':'').
+					  'Время работы: '.$bdata['serve_time'].'.'.
+					  '</div></li>'.
+					  '<br />';
+			}
+		}
+	}
+	print '</ol>';
+?>

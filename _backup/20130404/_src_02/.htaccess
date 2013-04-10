@@ -1,0 +1,17 @@
+RewriteEngine on
+Options -Indexes
+
+RewriteCond %{REQUEST_URI} download/(.*)$
+RewriteRule download/(.*)$ /index.php?dr=download.php&fln=$1 [L,R]
+
+#запуск спец. инструмента В ИНТЕРФЕЙСЕ САЙТА
+RewriteCond %{REQUEST_URI} tool-(.*)
+RewriteRule tool-(.*) /pool/tools/$1 [L]
+
+#запуск спец. инструмента ОТДЕЛЬНО
+RewriteCond %{REQUEST_URI} tool_(.*)
+RewriteRule tool_(.*) /index.php?dr=tools/$1 [L]
+
+#ПОДТВЕРЖДЕНИЕ РЕГИСТРАЦИИ
+RewriteCond %{REQUEST_URI} confirm_(.*)
+RewriteRule confirm_(.*) /pool/tools/mail_confirm.php?act_code=$1 [L]

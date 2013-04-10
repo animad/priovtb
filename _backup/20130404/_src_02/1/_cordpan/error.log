@@ -1,0 +1,22 @@
+[Fri Oct 19 22:45:37 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Fri Oct 19 22:45:37 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Oct 20 12:34:15 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Oct 20 12:35:36 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Oct 20 16:28:15 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Oct 20 16:28:27 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Wed Oct 24 22:22:28 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Wed Oct 24 22:22:28 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Fri Oct 26 22:57:16 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Fri Oct 26 22:57:40 2007] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function show_local_user_info() in D:\\_server\\www\\cordpan\\data\\modules\\users\\run.php on line 15, referer: http://cordpan/index.php
+[Fri Oct 26 22:57:49 2007] [error] [client 127.0.0.1] PHP Warning:  Wrong parameter count for trim() in D:\\_server\\www\\cordpan\\functions\\io.php on line 4, referer: http://cordpan/index.php
+[Sun Oct 28 13:50:27 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/styles.css, referer: http://cordpan/index.php?dr=c892311e4f548bbf0eafc2f9ef866212
+[Sun Oct 28 16:12:06 2007] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected ')' in D:\\_server\\www\\cordpan\\data\\modules\\users\\run.php on line 43
+[Sun Oct 28 19:30:23 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/user_edit, referer: http://cordpan/index.php?dr=c892311e4f548bbf0eafc2f9ef866212&edit
+[Sat Nov 10 11:50:53 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Nov 10 11:50:53 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sun Nov 18 17:22:40 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sun Nov 18 17:22:40 2007] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Feb 02 10:59:30 2008] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Sat Feb 02 10:59:30 2008] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Tue Feb 26 23:38:07 2008] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico
+[Tue Feb 26 23:38:07 2008] [error] [client 127.0.0.1] File does not exist: D:/_server/www/cordpan/favicon.ico

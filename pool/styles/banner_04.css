@@ -1,0 +1,25 @@
+#banner_04{
+	background-image: url(/pool/images/banners/banner_04_bail_20120928_01.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#banner_04, #banner_04:hover, #banner_04_hover{
+	position: absolute;
+	top: 0;
+	left: 170px;
+	width: 370px;
+	height: 220px;
+	text-decoration: none;
+	cursor: pointer;
+}
+#banner_04 .hrf_full{
+	font-size: 1px;
+	line-height: 1px;
+	text-decoration: none;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}

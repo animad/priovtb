@@ -1,0 +1,23 @@
+.row, .row .ans_var1{
+	position: static !important;
+}
+.row .ans_var .border_t{
+	clip: rect(0 1000px 1px 10px);
+}
+.row .ans_var .border_b{
+	clip: rect(0 1000px 1px 10px);
+	bottom: -15px;
+}
+.row .ans_var .border_r{
+	clip: rect(10px 1px 1000px 0);
+}
+.row .ans_var .border_l{
+	clip: rect(10px 1px 1000px 0);
+}
+.list_options li{
+	font-size: 13px;
+}
+.marg1{
+	padding-right: 10px !important;
+	padding-left: 10px !important;
+}

@@ -1,0 +1,22 @@
+.main_main-banner_box .sliding_row{
+	position: relative;
+	height: 100%;
+}
+
+.main_main-banner_box .r-col_mask{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 260px;
+	height: 238px;
+	background: url(main_main-banner_r-col-mask.png) no-repeat top left;
+}
+
+.main_main-banner_box .scroll-banners_row{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 710px;
+	height: 39px;
+	background: url(point_trnt_30.png) repeat top left;
+}

@@ -1,0 +1,13 @@
+			<div class="block1">
+				<table class="table1" width="100%">
+					<tr class="header1"><td class="tl"></td><td class="t"></td><td class="tr"></td></tr>
+					<tr class="header1"><td class="l"></td><td class="data">
+						Калькулятор валют
+					</td><td class="r"></td></tr>
+					<tr><td class="l"></td><td class="data">
+						data
+					</td><td class="r"></td></tr>
+					<tr><td class="bl"></td><td class="b"></td><td class="br"></td></tr>
+				</table>
+			</div>
+

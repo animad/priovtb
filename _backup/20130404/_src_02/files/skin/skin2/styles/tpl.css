@@ -1,0 +1,156 @@
+body{
+	margin: 0;
+	padding: 0;
+	color: black;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	background-color: #ffffff;
+	background-image: url(../images/bg.png);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+
+#main{
+	top: 0;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+#column{
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	width: 970px;
+}
+
+
+
+
+#logo{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 132px;
+	text-align: center;
+	background-image: url(../images/logo.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+}
+
+#text1{
+	position: absolute;
+	top: 19px;
+	left: 80px;
+	width: 354px;
+	height: 28px;
+	background-image: url(../images/text_prio_vtb.png);
+	background-repeat: no-repeat;
+}
+
+#text2{
+	position: absolute;
+	top: 19px;
+	left: 570px;
+	width: 348px;
+	height: 28px;
+	background-image: url(../images/text_mir_deneg.png);
+	background-repeat: no-repeat;
+}
+
+#text3{
+	position: absolute;
+	top: 55px;
+	left: 110px;
+	
+	font-size: 12px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	
+	color: #22714C;
+	letter-spacing: 1px;
+	
+	cursor: default;
+}
+
+
+
+#dataframe{
+	position: absolute;
+	left: 0;
+	top: 110px;
+	width: 100%;
+}
+#col_r{
+	position: relative;
+	float: right;
+	width: 240px;
+}
+#data_place, #data_place2{
+	position: relative;
+	text-align: left;
+	margin: 0;
+	font-size: 12px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+#data_place{
+	float: left;
+	width: 710px;
+}
+
+
+#footer{
+	position: relative;
+	margin: 0 0 10px 0;
+}
+#footer a, #footer a:hover, #footer{
+	font-size: 10px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #B2D4C4;
+	text-decoration: none;
+}
+#footer a:hover{
+	text-decoration: underline;
+}
+
+
+#mmenu{
+	position: absolute;
+	right: 150px;
+	top: 50px;
+	text-align: center;
+	line-height: 23px;
+	width: 293px;
+	font-size: 1px;
+}
+
+#mmenu a, #mmenu a:hover, #mmenu .no_act{
+	display: inline;
+	padding: 5px 5px;
+	
+	font-size: 12px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #22714C;
+	text-decoration: none;
+	
+	background-image: url(../images/point_blank.gif);
+}
+#mmenu .no_act{
+	color: #97baaa;
+	cursor: default;
+}
+
+#mmenu a:hover{
+	background-color: #ffffff;
+/*	padding-bottom: 5px;
+	border-bottom: 3px solid #22714C;*/
+}
+
+.clearfloat{
+	font-size: 0px;
+	line-height: 0px;
+	clear: both;
+}
+

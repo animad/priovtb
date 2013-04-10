@@ -1,0 +1,57 @@
+<?php
+	function create($show,$title,$theme,$section,$overview,$href=''){
+		global $_comvars,$mod,$_dir;
+		
+		$link=connect($_comvars['mysql']);
+
+		$q='insert into `docs` set
+		   `on`="'.$show.'",
+		   `date`=NOW(),
+		   `title`="'.addslashes(trim($title)).'",
+		   '.(trim($href)!=''?'`href`="'.addslashes(trim($href)).'",':'').'
+		   `overview`="'.addslashes(trim($overview)).'"';
+		$res=mysql_query($q);
+		print mysql_error();
+		if(mysql_errno()<1){
+			$did=mysql_insert_id();
+		
+			$q='insert into `label2doc` set
+			   `did`="'.$did.'",
+			   `lid`="'.$theme.'"';
+			$res=mysql_query($q);
+			print mysql_error();
+			if(mysql_errno()<1){
+				$q='insert into `label2doc` set
+				   `did`="'.$did.'",
+				   `lid`="'.$section.'"';
+				$res=mysql_query($q);
+				print mysql_error();
+				if(mysql_errno()<1){
+					//--- сохранение пустого файла
+					$ans=fcc($_dir['site'].'/'.$_comvars['paths']['data'].'/'.$did.'.html','file','');
+					if($ans[0]){
+						return true;
+					}else{ $erm=$ans[1]; }
+				}else{ $erm='Раздел ссылки не сохранен'; }
+			}else{ $erm='Тема ссылки не сохранена'; }
+			
+		}else{ $erm='Ссылка на статью не сохранена'; }
+
+		if(isset($_SESSION['er'])){ unset($_SESSION['er']); }
+
+		$_SESSION['er']['show']=$show;
+		$_SESSION['er']['title']=$title;
+		$_SESSION['er']['theme']=$theme;
+		$_SESSION['er']['section']=$section;
+		$_SESSION['er']['href']=$href;
+		$_SESSION['er']['overview']=$overview;
+		if(isset($_GET['m'])){ $_SESSION['er']['dest1']=$_GET['m']; }
+		if(isset($_POST['dest2'])){ $_SESSION['er']['dest2']=$_POST['dest2']; }
+		$_SESSION['er']['msg']=$erm;
+		return false;
+
+		close($link);
+	}
+ 
+	
+?>

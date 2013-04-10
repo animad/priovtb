@@ -1,0 +1,42 @@
+<?php
+
+	session_name('cordpan');
+	session_start();
+	
+	if(isset($_SERVER['HTTP_REFERER'])){
+		if(isset($_POST['elm1']) && isset($_POST['f_prefix']) && isset($_POST['f_name']) && isset($_POST['f_ext'])){
+			if(trim($_POST['f_name'])!='' && trim($_POST['f_prefix'])!=''){
+				$fln=trim($_POST['f_prefix']).'/'.trim($_POST['f_name']).(trim($_POST['f_ext'])?'.'.trim($_POST['f_ext']):'');
+				$fln1='../../../../'.$fln;
+				
+				if(file_exists($fln1) && is_writable($fln1)){
+					//--- сохраняем данные
+					$fp=fopen($fln1, 'w+');
+					if(fwrite($fp,$_POST['elm1'])!==false){
+						fclose ($fp);
+						chmod($fln1, 0777);
+					}else{ $erm='Ошибка записи'; }
+				}else{ $erm='Файл не может быть ИЗМЕНЁН'; }
+			}else{ $erm='Заполните имя файла'; }
+		}else{ $erm='Необходимые параметры отсутствуют'; }
+		
+		if(isset($erm)){
+			$_SESSION['er']['message']=$erm;
+			$_SESSION['er']['f_prefix']=isset($_POST['f_prefix'])?trim($_POST['f_prefix']):'';
+			$_SESSION['er']['f_name']=isset($_POST['f_name'])?trim($_POST['f_name']):'';
+			$_SESSION['er']['f_ext']=isset($_POST['f_ext'])?trim($_POST['f_ext']):'';
+			$_SESSION['er']['elm1']=isset($_POST['elm1'])?$_POST['elm1']:'';
+			header('Location: '.$_SERVER['HTTP_REFERER']);
+		}else{
+			$refurl=parse_url($_SERVER['HTTP_REFERER']);
+			parse_str($refurl['query'],$ru_vars);
+			$ru_vars['f2edit']=trim($_POST['f_prefix']).'/'.trim($_POST['f_name']).(trim($_POST['f_ext'])?'.'.trim($_POST['f_ext']):'');
+			while(list($key,$val)=each($ru_vars)){ $t1[]=$key.'='.$val; }
+			$refurl['query']=implode('&',$t1);
+			$refurl_new=$refurl['scheme'].'://'.$refurl['host'].'/'.$refurl['path'].'?'.$refurl['query'];
+			header('Location: '.$refurl_new);
+		}
+	}else{
+		header('Location: http://'.$_SERVER['HTTP_HOST']);
+	}
+?>

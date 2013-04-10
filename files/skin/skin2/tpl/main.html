@@ -1,0 +1,61 @@
+%doctype1%
+
+<html%doctype2%>
+	<head>
+		<title>%title%</title>
+		<meta http-equiv="Content-type" content="text/html; charset=%charset%" />
+		<meta name="keywords" content="%keywords%" />
+		<meta name="description" content="%description%" />
+		%meta%
+		<link href="files/skin/%skin%/styles/tpl.css" rel="stylesheet" style="text/css" media="screen">
+		<link href="files/skin/%skin%/styles/centerdata.css" rel="stylesheet" style="text/css" media="screen">
+		<link href="files/skin/%skin%/styles/print.css" rel="stylesheet" style="text/css" media="print">
+
+		<script type="text/javascript" src="files/scripts/jquery.js"></script>
+		<script type="text/javascript" src="pool/vars/global.js"></script>
+		<script type="text/javascript" src="pool/vars/mmenu.js"></script>
+		<script type="text/javascript" src="files/skin/%skin%/scripts/mmenu.js"></script>
+		<script type="text/javascript" src="files/scripts/get_news.js"></script>
+		<script type="text/javascript" src="files/scripts/layers_02.js"></script>
+		<script type="text/javascript" src="files/scripts/mail_valid.js"></script>
+		<script type="text/javascript" src="files/scripts/DHTMLAPI.js"></script>
+		<script type="text/javascript" src="files/scripts/scripts.js"></script>
+		<script type="text/javascript" src="files/scripts/init.js"></script>
+		<script type="text/javascript" src="files/scripts/preloadimg.js"></script>
+		<script type="text/javascript">
+var current_page=null; //--- активная страница
+var dr="%dr%" //--- файл активной страницы
+
+//--- отпределение IE7
+var isIE7=(window.navigator.userAgent.indexOf("MSIE 7")>=0)?true:false;
+var isIE6=(window.navigator.userAgent.indexOf("MSIE 6")>=0)?true:false;
+
+		</script>
+	</head>
+
+	<body>
+		<div id="main">
+			<div id="column">
+					<div id="logo"></div>
+					<div id="text1"></div>
+					<div id="text2"></div>
+					<div id="text3">лицензия ЦБ №212 от 6 декабря 1989 года</div>
+					<div class="lang_change"><a href="?lang=eng" title="English version">Eng</a> <a href="/" title="Русскоязычный вариант" class="cur">Рус</a></div>
+					<div id="mmenu"><script type="text/javascript">mmenu_create();</script></div>
+					<div id="dataframe">
+						%content%
+						<div class="clearfloat"></div>
+						<br />
+						<div id="footer">
+							<img src="pool/images/point_blank.gif" width="100%" height="1" class="separator_03" border="0">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+								<td style="text-align: left; padding-left: 10px"><a href="mailto:post@priovtb.com">©2004, Прио-Внешторгбанк (ОАО), +7 (4912) 24-49-24, г. Рязань, ул. Есенина, д.82/26</a></td>
+								<td style="text-align: right; padding-right: 10px"><a href="mailto:animad.gm@gmail.com">©2008, developed by AnimaD</a></td>                                    <?php @include ($_SERVER['DOCUMENT_ROOT'].'/files/images/foot.gif');?>
+							</tr></table>
+						</div>
+					</div>
+			</div>
+		</div>
+%ga%
+	</body>
+</html>

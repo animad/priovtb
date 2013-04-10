@@ -1,0 +1,10 @@
+[info]
+uId="3eab239a9cb4e95dad3889b5e7d68fec"
+title="статьи"
+
+[run]
+place="articles"
+execute="run.php"
+
+[config]
+

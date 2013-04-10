@@ -1,0 +1,22 @@
+<a href="?dr=info_20101220.php" id="banner_04"><span>Всем клиентам &mdash;<br />юридическим лицам<br />и предпринимателям нужно<br />перезаключить договора банковского счета.<br /><br /><div class="hrf5">Подробнее</div></span></a>
+				
+#banner_04, #banner_04:hover, #banner_04_hover{
+	position: absolute;
+	background-image: url(../images/banner_20101221_01.png);
+	top: 0;
+	left: 170px;
+	width: 370px;
+	height: 220px;
+	text-decoration: none;
+}
+#banner_04 span, #banner_04:hover span, #banner_04_hover span{
+	position: absolute;
+	top: 75px;
+	left: 150px;
+	font-size: 14px;
+	font-family: inherit;
+	
+}
+#banner_04:hover span, #banner_04_hover span{
+	text-decoration: underline;
+}				

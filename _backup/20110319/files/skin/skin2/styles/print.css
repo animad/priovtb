@@ -1,0 +1,78 @@
+#col_r, #logo, #text1, #text2, #text3, #mmenu, #footer{
+	display: none;
+}
+
+body{
+
+}
+
+/**/
+
+.pic_left{
+	float: left;
+	padding: 1px;
+	margin: 0 10px 10px 0;
+}
+.pic_border, .pic_left{
+	border: 1px solid black;
+}
+
+/* ----- data_place ------- */
+
+#data_place p, #data_place h1, #data_place h2, h1, li{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+li{
+	font-size: 12px;
+}
+
+#data_place p{
+	font-size: 12px;
+	text-indent: 20px;
+	text-align: justify;
+}
+#data_place h1, h1{
+	font-size: 20px;
+	text-align: center;
+}
+#data_place h2{
+	font-size: 13px;
+	text-align: left;
+	letter-spacing: 2px;
+	margin: 0 0 5px 0;
+}
+
+#data_place h4{
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 2px;
+	margin: 0 0 5px 0;
+}
+
+/**/
+
+table{
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+}
+
+table td, table th, table tr.header td{
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+	vertical-align: top;
+	color: black;
+}
+
+table th, table tr.header td{
+	text-align: center;
+	vertical-align: middle;
+	background-color: #a4a4a4;
+}
+
+.qm_float_r{
+	display: none;
+}
