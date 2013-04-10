@@ -1,0 +1,8 @@
+log*
+tmp
+_backup
+*.db
+*.xcf
+*.svg
+*.zip
+*~
